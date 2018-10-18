@@ -469,6 +469,10 @@ NSInteger const kATLSharedCellTag = 1000;
             // If no preview image part found, resort to the full-resolution image.
             imagePart = ATLMessagePartForMIMEType(message, ATLMIMETypeImageJPEG);
         }
+        if (!imagePart) {
+            imagePart = ATLMessagePartForMIMEType(message, ATLMIMETypeImagePNG);
+        }
+
         // Resort to image's size, if no dimensions metadata message parts found.
         if ((imagePart.transferStatus == LYRContentTransferComplete) ||
             (imagePart.transferStatus == LYRContentTransferAwaitingUpload) ||
